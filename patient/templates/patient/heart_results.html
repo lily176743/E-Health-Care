@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block body_content %}
+
+<div class="page-wrapper">
+    <div class="content">
+        <div class="row">
+          <div class="alert alert-warning alert-dismissible fade show" role="alert">
+              <h4 class="page-title"><strong>{{sur}}</strong></h4>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+            
+            <div class="card-box">
+                {% if disease_doctor_list.all %}
+                  <h5>Suggested Doctor Information</h5>
+                  <div class="container">
+                    <div class="row">
+                      <div class=" col md-12">
+                       
+                          <table class="table table-border table-striped custom-table datatable mb-0" style="max-height: 500px; overflow-x: auto; overflow-y: auto;">
+                            <thead>
+                              <tr>
+                                <th scope="col">DoctorID</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Department</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Phone Number</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {% for doctor in disease_doctor_list %}
+                              <tr>
+                                <th> {{doctor.doctorID}}</th>
+                                <th> {{doctor.user.first_name}}&nbsp;{{doctor.user.last_name}}</th>
+                                <th>{{doctor.department}}</th>
+                                <td>{{doctor.user.email}}</td>
+                                <td>{{doctor.phone_number}}</td>
+                              </tr>
+                              {% endfor %}
+                       
+                            </tbody>
+                              </table>
+                              {% else %}
+                              <h5>No Doctor Available </h5>
+                        {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,136 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% block body_content %}
+<div class="page-wrapper">
+    <div class="content">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h4 class="page-title">Search Available Doctor</h4>
+                    </div>
+                </div>
+            <div class="card-box">
+              <form class="form-inline my-2 my-lg-0" method="POST" action="">
+                {% csrf_token %}
+                <input style="width: 50%;" type="text" class="form-control mr-sm-2" value="{{ request.POST.term }}" name="term" placeholder="Search by doctor name or department or disease">
+                <!-- <input value={{request.POST.term}} name="term" class="form-control mr-sm-2" type="text" placeholder="Search by speciality" aria-label="Search"> -->
+                <button class="btn btn-outline-primary my-2 my-sm-0" type="submit" value="submit">Search</button>
+              </form>
+                 <!-- <form method="POST" action="">
+                    {% csrf_token %}
+                    <label>
+                        Search Doctor
+                    </label>
+                    <input type="text" class="form-control" value="{{ request.POST.term }}" name="term" placeholder="Search by doctor name or disease name">
+                      <div class="d-flex justify-content-center mt-3 login_container">
+                                  <button type="submit" value="submit" class="btn btn-primary btn-user "> Find Doctor</button>
+                        </div>
+                </form> -->
+            </div>
+                   
+            <div class="card-box">
+                {% if doctors.all %}
+                <h4 class="mb-5"> List of Doctors--</h4>
+                <div class="table-responsive">
+									<table class="table table-hover mb-0">
+                    <thead>
+                      <tr class="table-primary">
+                        <th scope="col">Doctor ID</th>
+                        <th scope="col">Department</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Contact</th>
+                        <th scope="col">Action</th>
+                      </tr>
+                    </thead>
+										<tbody>
+                      <tbody>
+                        {% for doctor in doctors %}
+                      <tr class="table-secondary">
+                        <th>{{doctor.doctorID}}</th>
+                        <td>{{doctor.department}}</td>
+                        <th>Dr.{{doctor.user.first_name}}&nbsp;{{doctor.user.last_name}}</th>
+                        <td>{{doctor.user.email}}</td>
+                        <td>{{doctor.phone_number}}</td>
+                        <td><a href="doctor_profile/{{doctor.id}}" type="button" class="btn btn-primary">View Profile</a></td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+									</table>
+								</div>
+                          <!-- <table class="table table-light">
+                            <thead>
+                              <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Contact</th>
+                                <th scope="col">Action</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                {% for doctor in doctors %}
+                              <tr>
+                                <th>{{doctor.name}}</th>
+                                <td>{{doctor.email}}</td>
+                                <td>{{doctor.phone_number}}</td>
+                                <td>View Profile</td>
+                              </tr>
+                              {% endfor %}
+                            </tbody>
+                              </table> -->
+                              <!-- {% if doctors.has_other_pages %}
+                              <nav aria-label="Page navigation example">
+                              <ul class="pagination justify-content-center"">
+
+                              {% if doctors.has_previous %}
+                              <li class="page-item">
+                              <a class="page-link" href="#" aria-label="Previous">
+                              <span aria-hidden="true">&laquo;</span>
+                              </a>
+                              </li>
+
+                              {% else %}
+                              <li class="page-item disabled">
+                              <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                              </li>
+
+                              {% endif %}
+
+                              {% for i in doctors.paginator.page_range %}
+                              {% if doctors.number == i %}
+                                   <li class="page-item active" aria-current="page">
+                                      <a class="page-link" href="#">{{i}} <span class="sr-only">(current)</span></a>
+                                  </li>
+                              {% else %}
+                                <li class="page-item"><a class="page-link" href="?page={{ i }}">{{i}}</a></li>
+                              {% endif %}
+                              {% endfor %}
+
+                              {% if doctors.has_next %}
+                              <li class="page-item">
+                              <a class="page-link" href="#" aria-label="Next">
+                              <span aria-hidden="true">&raquo;</span>
+                              </a>
+                              </li>
+                              {% else %}
+                              <li class="page-item disabled">
+                              <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Next</a>
+                              </li>
+                              {% endif %}
+                              </ul>
+                              </nav>
+                              {% endif %} -->
+                {% else %}
+                <h4 class="mb-5"> No Doctors Available--</h4>
+                {% endif %}
+            </div>
+                                           
+    </div>
+</div>
+
+{% endblock %}
+
+
+
+
+ 

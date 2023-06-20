@@ -1,0 +1,173 @@
+{% extends "base.html" %}
+{% block body_content %}
+
+
+
+
+<div class="page-wrapper" >
+    <div class="content">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h4 class="page-title"><strong>Please, choose and enter following parameters.</strong></h4>
+                    </div>
+                </div>
+            <div class="card-box" style="background-color: skyblue;">
+       
+           
+      <form method="POST" action="/patient/heart/" enctype="multipart/form-data">
+        {% csrf_token %}
+         
+        <h3 class="card-title"></h3>
+          
+        <form >
+          <div style=text-transform:capitalize;    >
+            <div class="form-group row">
+              <label for="inputAge" class="col-sm-2 col-form-label">Age</label>
+              <div class="col-sm-3">
+                <input type="text" name="age" class="form-control" id="age" placeholder="Age in year" required>
+              </div>
+            </div>
+
+
+            <class class="form-group row" >
+                <label for="inputsex" class="col-sm-2 col-form-label">Sex</label>
+                <div class="col-sm-3">
+
+                    <select class="form-control" name="sex">
+                        <option>Male</option>
+                        <option>Female</option>
+                        <option>Other</option>
+                      </select>
+                </div>
+            </class>
+                
+
+            <class class="form-group row" >
+                <label for="inputCp" class="col-sm-2 col-form-label" >chest pain type(Cp)</label>
+                <div class="col-sm-3">
+
+                    <select class="form-control" name="cp">
+                        <option>Typical angina</option>
+                        <option>Atypical angina</option>
+                        <option> Non-anginal pain</option>
+                        <option> Asymptomatic</option>
+                      </select>
+                </div>
+            </class>
+
+            <div class="form-group row">
+                <label for="inputAge" class="col-sm-2 col-form-label">resting blood pressure(Trestbps)</label>
+                <div class="col-sm-3">
+                  <input type="text" name = "trestbps" class="form-control" id="trestbps" placeholder="Trestbps in number">
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="inputAge" class="col-sm-2 col-form-label">serum cholestoral in mg/dl(chol)</label>
+                <div class="col-sm-3">
+                  <input type="text" class="form-control" name="chol" id="chol" placeholder="Chol in number" required>
+                </div>
+              </div>
+
+              <class class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">fasting blood sugar > 120 mg/dl(fbs)</label>
+                <div class="col-sm-3">
+
+                    <select class="form-control" name="fbs">
+                        <option>True</option>
+                        <option>False</option>
+                      </select>
+                </div>
+            </class>
+
+            <class class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">resting electrocardiographic results (restecg)</label>
+                <div class="col-sm-3">
+
+                    <select class="form-control" name="restecg">
+                        <option>Normal</option>
+                        <option>having ST-T</option>
+                        <option>hypertrophy</option>
+                      </select>
+                </div>
+            </class>
+
+
+            <div class="form-group row">
+                <label for="inputAge" class="col-sm-2 col-form-label">maximum heart rate achieved(thalach)</label>
+                <div class="col-sm-3">
+                  <input type="text" class="form-control"  name="thalach" id="thalach" placeholder="Thalach in number" required>
+                </div>
+              </div>
+            
+              <class class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">exercise induced angina(exang)</label>
+                <div class="col-sm-3">
+
+                    <select class="form-control" name="exang">
+                        <option>Yes</option>
+                        <option>No</option>
+                        
+                      </select>
+                </div>
+            </class>
+            
+            <div class="form-group row">
+                <label for="inputAge" class="col-sm-2 col-form-label">ST depression induced by exercise relative to rest(oldpeak)</label>
+                <div class="col-sm-3">
+                  <input type="text" class="form-control" name="oldpeak" id="oldpeak" placeholder="Oldpeak in number" required>
+                </div>
+              </div>
+            
+
+              <class class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">the slope of the peak exercise ST segment(slope)</label>
+                <div class="col-sm-3">
+
+                    <select class="form-control" name="slope">
+                        <option>Upsloping</option>
+                        <option>Flat</option>
+                        <option>Downsloping</option>
+                        
+                      </select>
+                </div>
+            </class>
+
+
+            <class class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">number of major vessels (0-3) colored by flourosopy(ca)</label>
+                <div class="col-sm-3">
+
+                    <select class="form-control" name="ca">
+                        <option>0</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        
+                      </select>
+                </div>
+            </class>
+
+
+            <class class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">thal</label>
+                <div class="col-sm-3">
+
+                    <select class="form-control" name="thal">
+                        <option>Normal</option>
+                        <option>Fixed defect</option>
+                        <option>Reversable defect</option>
+                      </select>
+                </div>
+            </class>
+            </div>
+           
+            <button type="Check" class="btn btn-primary btn-user ">Submit</button>
+
+            </form>     
+      </div>
+      </div>
+      </div>
+ 
+{% endblock %}
